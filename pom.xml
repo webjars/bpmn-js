@@ -11,7 +11,7 @@
   <packaging>jar</packaging>
   <groupId>org.webjars</groupId>
   <artifactId>bpmn-js</artifactId>
-  <version>0.8.1-SNAPSHOT</version>
+  <version>0.8.0-1-SNAPSHOT</version>
   <name>bpmn-js</name>
   <description>A webjar for bpmn-js</description>
   <url>http://bpmn.io</url>
@@ -25,6 +25,16 @@
 
     <webjar.base>${project.build.outputDirectory}/META-INF/resources/webjars</webjar.base>
     <webjar.dest>${webjar.base}/${project.artifactId}/${project.version}</webjar.dest>
+    <requirejs>
+        {
+           "paths": {
+               "bpmn-viewer": "bpmn-viewer"
+           },
+           "shim": {
+               "bpmn-viewer": ["jquery", "jquery-mousewheel", "lodash", "sax", "snap-svg"]
+           }
+        }
+    </requirejs>
   </properties>
 
   <developers>
@@ -93,20 +103,20 @@
             <goals><goal>run</goal></goals>
             <configuration>
               <target>
-                <echo message="download pre-packaged distribution" />
-                <get src="${upstream.archiveUrl}" dest="${project.build.directory}" />
+                <echo message="download pre-packaged distribution"/>
+                <get src="${upstream.archiveUrl}" dest="${project.build.directory}"/>
 
-                <echo message="extract archive" />
+                <echo message="extract archive"/>
                 <untar src="${project.build.directory}/v${upstream.version}.tar.gz" dest="${project.build.directory}/${upstream.version}" compression="gzip">
 
                   <patternset>
-                    <exclude name="${upstream.archiveName}/test/" />
+                    <exclude name="${upstream.archiveName}/test/"/>
                   </patternset>
                 </untar>
 
-                <echo message="moving resources" />
+                <echo message="moving resources"/>
                 <copy todir="${webjar.dest}">
-                  <fileset dir="${project.build.directory}/${upstream.version}/${upstream.archiveName}/dist" />
+                  <fileset dir="${project.build.directory}/${upstream.version}/${upstream.archiveName}/dist"/>
                 </copy>
               </target>
 
@@ -118,13 +128,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5</version>
+        <version>2.5.1</version>
       </plugin>
 
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.2</version>
+        <version>1.6.5</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>sonatype-nexus-staging</serverId>
