@@ -11,14 +11,14 @@
   <packaging>jar</packaging>
   <groupId>org.webjars</groupId>
   <artifactId>bpmn-js</artifactId>
-  <version>0.11.1-SNAPSHOT</version>
+  <version>0.12.0-SNAPSHOT</version>
   <name>bpmn-js</name>
   <description>A webjar for bpmn-js</description>
   <url>http://bpmn.io</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <upstream.version>0.11.0</upstream.version>
+    <upstream.version>0.12.0</upstream.version>
     <upstream.archiveName>bower-bpmn-js-${upstream.version}</upstream.archiveName>
     <upstream.baseUrl>https://github.com/bpmn-io/bower-bpmn-js</upstream.baseUrl>
     <upstream.archiveUrl>${upstream.baseUrl}/archive/v${upstream.version}.tar.gz</upstream.archiveUrl>
